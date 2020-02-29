@@ -1,10 +1,11 @@
 
 a = 12345
-b = 9
+b = 921
 
 digits_of_a = []
 digits_of_b = []
-cal = []
+row = []
+rows = []
 
 def parsing_digits(value,list_to_store ):
     while value % 10 != 0  or value !=0:
@@ -31,21 +32,42 @@ def Reverse(lst):
 check_value(a,digits_of_a)
 check_value(b,digits_of_b)
 
-print(digits_of_a)
-print(digits_of_b)
-
+count = 1
 for i in digits_of_b:   
     carry = 0
+    row.clear()
+
+    for c in range(1,count):
+        row.append(0) 
+    count+=1
+
+    #Multiply with values of A
     for d in digits_of_a:
         temp1 = d * i
         temp1 = temp1 + carry
         if temp1 > 9:
-            cal.append(temp1 % 10) 
+            row.append(temp1 % 10) 
             carry = int(temp1 /10)
         else:
-            cal.append(temp1)
-    cal.append(carry)
+            row.append(temp1)
+            carry = 0
+    if carry == 0:
+        pass
+    else:
+        row.append(carry)
+    
+    #print(row)
+    #rows.append(str(row))
+    rows.append(str(row))
 
-print(Reverse(cal))
+
+print(digits_of_a)
+print(digits_of_b)
+
+
+for row in rows:
+    print(row)
+    
+
 
 
