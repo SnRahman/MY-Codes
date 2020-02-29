@@ -4,7 +4,6 @@ b = 921
 
 digits_of_a = []
 digits_of_b = []
-row = []
 rows = []
 
 def parsing_digits(value,list_to_store ):
@@ -32,33 +31,32 @@ def Reverse(lst):
 check_value(a,digits_of_a)
 check_value(b,digits_of_b)
 
-count = 1
+count = 0
 for i in digits_of_b:   
     carry = 0
-    row.clear()
-
-    for c in range(1,count):
-        row.append(0) 
-    count+=1
+    rows.append([])
+    for c in range(0,count):
+        if(count == 0):
+            pass
+        else:
+            rows[count].append(0) 
 
     #Multiply with values of A
     for d in digits_of_a:
         temp1 = d * i
         temp1 = temp1 + carry
         if temp1 > 9:
-            row.append(temp1 % 10) 
+            rows[count].append(temp1 % 10) 
             carry = int(temp1 /10)
         else:
-            row.append(temp1)
+            rows[count].append(temp1)
             carry = 0
     if carry == 0:
         pass
     else:
-        row.append(carry)
-    
-    #print(row)
-    #rows.append(str(row))
-    rows.append(str(row))
+        rows[count].append(carry)
+    rows[count] = Reverse(rows[count])
+    count+=1
 
 
 print(digits_of_a)
@@ -67,7 +65,28 @@ print(digits_of_b)
 
 for row in rows:
     print(row)
-    
+
+final_result = []
+addition = base = carry = 0
+
+while len(rows[0] )> 0 or len(rows[1] )> 0 or len(rows[2] )> 0:
+    for i in range(0,len(rows)):
+        if len(rows[i] ) == 0:
+            pass
+        else: 
+            addition += rows[i].pop()
+    addition += carry
+    carry = 0
+    if addition > 9:
+        base = addition % 10 
+        carry = int(addition /10)
+        final_result.append(base)
+    else:
+        final_result.append(addition)
+        carry = 0
+    addition = 0
+
+print('Final Result is: {}'.format(Reverse(final_result)))
 
 
 
