@@ -1,4 +1,3 @@
-
 a = 12345678901234567890
 b = 12345678901234567890
 
@@ -15,7 +14,7 @@ def parsing_digits(value,list_to_store ):
         value = remaining
 
 #after 16 digits from decimal point, values goes in exponent power. to avoid such thing divide the
-#value before 16 digits
+#value after 16 digits
 def check_value(i,value):
     length = len(str(i))
     if length >= 16:
@@ -35,12 +34,13 @@ def Reverse(lst):
 check_value(a,digits_of_a)
 check_value(b,digits_of_b)
 
-
 #Multiplication 
 count = 0
 for i in digits_of_b:   
     carry = 0
     rows.append([])
+
+    #place a zeros at the starting of new rows
     for c in range(0,count):
         if(count == 0):
             pass
@@ -63,10 +63,8 @@ for i in digits_of_b:
         rows[count].append(carry)
     rows[count] = Reverse(rows[count])
     count+=1
-
 final_result = []
 addition = base = carry = 0
-
 
 #Performaing the final addition
 while len(rows) > 0:
@@ -75,15 +73,12 @@ while len(rows) > 0:
 
     for i in range(0,len(rows)):
         if len(rows[i] ) == 0 :
-            print('row is : {}'.format(rows[i]))
-            print('index is : {}'.format(i))    
             pass
         else: 
             addition += rows[i].pop()
     addition += carry
-    print('addition is {}'.format(addition))
-    print(rows)
     carry = 0
+    
     if addition > 9:
         base = addition % 10 
         carry = int(addition /10)
@@ -97,13 +92,7 @@ reverse_list = Reverse(final_result)
 
 #Removing the extra Zeros
 while reverse_list[0] == 0:
-    print('call')
     reverse_list.remove(reverse_list[0])
-
-
 
 print('Final Result is: {}'.format(reverse_list))
 print(a*b)
-
-
-
