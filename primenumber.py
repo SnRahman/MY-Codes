@@ -2,14 +2,14 @@ print('#' * 40)
 print('Check the given number is prime or not')
 print('#' * 40)
 
-num = int(input('Enter the number : '))
+i = int(input('Enter Number : '))
 
-check = 0
-for i in range(2,num+1):
-	for j in range(num, 1,-1):
-		if i * j == num:
-			check  += 1
-if check > 0:
-  print('Not a prime number')
+if (i == 1 or i == 3 or i == 5):
+	print('{} IS a prime number'.format(i))
+elif(i == 0 or i == 4):
+	print('{} Not a prime number'.format(i))
 else:
-  print('Is a prime number')
+	if i%2 != 0 and i%3 != 0 and i%5 != 0:
+		print('{} : Prime Number'.format(i))
+	else:
+		print('{} : Not a prime number'.format(i))
