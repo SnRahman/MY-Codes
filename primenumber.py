@@ -1,15 +1,31 @@
-print('#' * 40)
-print('Check the given number is prime or not')
-print('#' * 40)
+def print_heading(symbol,mul,heading):
+	print(symbol * mul)
+	print(heading)
+	print(symbol * mul)
 
-i = int(input('Enter Number : '))
-
-if (i == 1 or i == 3 or i == 5):
-	print('{} IS a prime number'.format(i))
-elif(i == 0 or i == 4):
-	print('{} Not a prime number'.format(i))
-else:
-	if i%2 != 0 and i%3 != 0 and i%5 != 0:
-		print('{} : Prime Number'.format(i))
+def prime_number(num):
+	check = 0
+	for i in range(2,num+1):
+		for j in range(num, 1,-1):
+			if i * j == num:
+				check  += 1
+	if check > 0:
+		return 0
 	else:
-		print('{} : Not a prime number'.format(i))
+		return 1 
+
+def main():
+	print_heading('*',40,'Calculate prime Number after Given Number')
+	num = int(input('Enter Number : '))
+	i = num 
+
+	count = 0
+	while count !=1:
+		i = i + 1
+		count = prime_number(i)
+	
+	print('Prime Bigger than {} is {}'.format(num,i))
+
+if __name__ == "__main__":
+	main()
+	
