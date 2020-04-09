@@ -11,3 +11,13 @@ for i in range(num+1):
     if i != num:
         factorial = 1
 print('factorail of {} is {}'.format(num,factorial))
+
+#recursive function
+def factorialFun(n):
+    if n < 0:
+        return None
+    if n < 2:
+        return 1
+    return n * factorialFun(n - 1)
+
+print(factorialFun(10))
